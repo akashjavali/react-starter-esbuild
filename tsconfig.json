@@ -1,0 +1,66 @@
+{
+  "ts-node": {
+    "extends": "ts-node/node14/tsconfig.json",
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "moduleResolution": "node"
+    }
+  },
+  "compilerOptions": {
+    "target": "esnext",
+    "baseUrl": "src",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es5",
+      "es6",
+      "es2015",
+      "es2017",
+      "es2020"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@Primitives": ["@Primitives"],
+      "@Icons": ["@Assets/@Icons"],
+      "@Assets": ["@Assets"],
+      "@Utils": ["@Utils"],
+      "@Services": ["@Services"],
+      "@Pages": ["@Pages"],
+      "@Components": ["@Components"],
+      "@AdminComponents": ["@Components/Admin"],
+      "@AdminPrimitives": ["@Primitives/Admin"],
+      "@Routes": ["routes.tsx"],
+      "@Helpers": ["@Utils/helpers.tsx"],
+      "@Constants": ["@Constants"],
+    }
+  },
+  "include": [
+    "src",
+    "stories",
+    "./node_modules/esbuild-plugin-lit/modules.d.ts"
+  ],
+  "exclude": ["node_modules"],
+  "rules": {
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
+    ],
+  },
+}

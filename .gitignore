@@ -1,0 +1,17 @@
+# Don't check auto-generated stuff into git
+build
+node_modules
+.DS_Store
+npm-debug.log
+package-lock.json
+yarn.lock
+.gitlab-ci.yml
+
+public/*
+!public/index.html
+!public/favicon.png
+!public/bulk_upload_inventory.xlsx
+!public/bulk_customer_user.xlsx
+storybook-static
+# .env
+.vscode
