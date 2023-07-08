@@ -1,8 +1,8 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import ContextContainer from '@Utils/context/context';
+import ContextContainer from 'utils/context/context-container';
 
-import { AdminHome } from '@Pages';
+import { AdminHome } from 'pages';
 
 export default function App() {
   return (

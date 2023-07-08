@@ -1,5 +1,5 @@
-import { ProvideAuth, useAuth } from '@Utils/context/auth';
-import { ProvideUserManagement, useUser } from '@Utils/context/admin/user-management/useUser';
+import { ProvideAuth, useAuth } from 'utils/context/auth';
+import { ProvideUserManagement, useUser } from 'utils/context/admin/user-management/useUser';
 import { useDebounce } from './useDebounce';
 import useToken from './useToken';
 import { useHashRouteToggle } from './useHashRouteToggle';

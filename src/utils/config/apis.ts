@@ -1,4 +1,4 @@
-import { API_SERVER_URL } from '@Constants';
+import { API_SERVER_URL } from 'constants';
 import axios from 'axios';
 import LocalStorageService from '../misc/localStorage';
 

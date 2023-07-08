@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { Typography, Box } from '@mui/material';
-import { theme } from '@Utils/config/theme';
+import { theme } from 'utils/config/theme';
 
 export interface StatusTypeI {
   status?: any;

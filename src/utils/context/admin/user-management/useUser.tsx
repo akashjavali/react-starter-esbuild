@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 // import { useQueryClient } from 'react-query';
-import { hooks } from '@Utils';
+import { hooks } from 'utils';
 
 const UserManagementContext = createContext<any>(null);
 

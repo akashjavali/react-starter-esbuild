@@ -1,6 +1,6 @@
 // Hook (use-auth.js)
 import React, { useState, useContext, createContext } from 'react';
-import { interfaces } from '@Utils';
+import { interfaces } from 'utils';
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';

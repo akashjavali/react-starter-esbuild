@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { theme } from '@Utils';
+import { theme } from 'utils';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import './global.scss';
+import 'assets/styles/global.scss';
 
-import App from './App';
+import App from './app';
 
 const { CustomMuiThemeProvider } = theme;
 

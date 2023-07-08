@@ -1,4 +1,4 @@
-import { AdminHome } from '@Pages';
+import { AdminHome } from 'pages';
 
 export const AdminRoutes = [
   {

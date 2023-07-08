@@ -1,4 +1,4 @@
-import { hooks } from '@Utils';
+import { hooks } from 'utils';
 
 interface PropsI {
   children: React.ReactNode;
