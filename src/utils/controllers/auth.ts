@@ -1,5 +1,4 @@
-import { API } from 'constants';
-
+import { API } from 'constants/services';
 import { getApi, postApi, putApi } from '../config/apis';
 
 /**
