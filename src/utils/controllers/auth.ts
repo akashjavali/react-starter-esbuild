@@ -1,5 +1,5 @@
 import { API } from 'constants/services';
-import { getApi, postApi, putApi } from '../config/apis';
+import { postApi, putApi } from '../config/apis';
 
 /**
  * Logs in the user with the given data.
@@ -21,9 +21,3 @@ export const generateOTP = (number: any) => postApi(`${API.otpLogin}`, number);
  * @returns A promise that resolves to the response from the API.
  */
 export const loginViaOTP = (data: any) => putApi(`${API.otpLogin}`, data);
-
-/**
- * Gets the roles from the API.
- * @returns A promise that resolves to the roles.
- */
-export const getRoles = () => getApi(API.roles);

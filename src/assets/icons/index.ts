@@ -1,3 +1,3 @@
-import { ErrorIcon } from './ErrorIcon';
+import { ErrorIcon } from './error-icon';
 
 export { ErrorIcon };
