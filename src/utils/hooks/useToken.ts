@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import LocalStorageService from '../misc/localStorage';
+import LocalStorageService from 'constants/localStorage';
 
 const LocalStorage = LocalStorageService.getService();
 

@@ -1,12 +1,12 @@
 // Hook (use-auth.js)
 import React, { useState, useContext, createContext } from 'react';
-import { interfaces } from 'utils';
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import LocalStorageService from 'constants/localStorage';
+import { SignInDataI, SignInViaMobileDataI } from 'constants/interface';
 import useToken from '../../hooks/useToken';
-import LocalStorageService from '../../misc/localStorage';
 import { logIn } from '../../controllers/auth';
 
 interface Role {}
@@ -15,8 +15,8 @@ interface User {}
 type AuthType = 'login' | 'loginViaOTP' | 'register';
 type SignInMobileType = 'login' | 'otp';
 
-type OnSignInT = (data: interfaces.SignInDataI) => void;
-type OnSendOtpT = (data: interfaces.SignInViaMobileDataI) => void;
+type OnSignInT = (data: SignInDataI) => void;
+type OnSendOtpT = (data: SignInViaMobileDataI) => void;
 type OnResendOtpT = () => void;
 type OnSignUpT = () => void;
 type OnSignOutT = () => void;
@@ -27,7 +27,6 @@ type OnClickRegisterT = () => void;
 type OnClickSignInViaEmailT = () => void;
 
 interface StateI {
-  user: interfaces.UserI | null;
   roles: Role[] | null;
   useGetRolesData?: any;
   authType: AuthType;

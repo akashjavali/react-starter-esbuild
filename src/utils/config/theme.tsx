@@ -352,12 +352,6 @@ export const theme = createTheme({
       lineHeight: '125%',
       // color: '#222222',
     },
-    // h7: {
-    //   fontSize: '27px',
-    //   fontWeight: 500,
-    //   lineHeight: '26px',
-    //   color: '#222222',
-    // },
     subtitle1: {
       fontSize: '14px',
       fontWeight: 600,
