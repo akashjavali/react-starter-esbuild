@@ -30,129 +30,78 @@ if (process.argv.length > 2) {
   config = process.argv[2];
 }
 
-config == '-watch' &&
-  esbuild
-    .build({
-      // pass any options to esbuild here...
-      logLevel: 'info',
-      entryPoints: ['src/index.tsx'],
-      bundle: true,
-      outdir: outdirectory,
-      outbase: 'src',
-      minify: false,
-      sourcemap: true,
-      minifyWhitespace: false,
-      minifyIdentifiers: false,
-      minifySyntax: false,
-      target: 'es2020',
-      tsconfig: './tsconfig.json',
-      loader: {
-        '.tsx': 'tsx',
-        '.ts': 'ts',
-        '.ttf': 'file',
-        '.jpg': 'file',
-        '.jpeg': 'file',
-        '.png': 'file',
-        '.gif': 'file',
-        '.webp': 'file',
-        '.avif': 'file',
-        '.svg': 'file',
-      },
-      incremental: true,
-      watch: {
-        onRebuild(error) {
-          if (error) console.error('watch build failed:', error);
-          else console.log('watch build succeeded...');
-        },
-      },
-      define: {
-        'process.env.REACT_APP_NODE_ENV': JSON.stringify(process.env.REACT_APP_NODE_ENV),
-        'process.env.REACT_APP_API_SERVER_URL': JSON.stringify(
-          process.env.REACT_APP_API_SERVER_URL,
-        ),
-        'process.env.REACT_APP_DASHBOARD_URL': JSON.stringify(process.env.REACT_APP_DASHBOARD_URL),
-        global: 'window',
-      },
-      plugins: [
-        sassPlugin({
-          async transform(source) {
-            const { css } = await postcss([autoprefixer]).process(source, { from: undefined });
-            return css;
+const buildOptions = {
+  // pass any options to esbuild here...
+  logLevel: 'info',
+  entryPoints: ['src/index.tsx'],
+  bundle: true,
+  outdir: outdirectory,
+  outbase: 'src',
+  minify: config == '-watch' ? false : true,
+  sourcemap: config == '-watch' ? true : false,
+  minifyWhitespace: config == '-watch' ? false : true,
+  minifyIdentifiers: config == '-watch' ? false : true,
+  minifySyntax: false,
+  target: 'es2020',
+  tsconfig: './tsconfig.json',
+  incremental: config == '-watch' ? true : false,
+  watch:
+    config == '-watch'
+      ? {
+          onRebuild(error) {
+            if (error) console.error('watch build failed:', error);
+            else console.log('watch build succeeded...');
           },
-        }),
-        svgrPlugin(),
-        inlineImage({
-          extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'],
-          limit: -1,
-        }),
-        // eslint(),
-      ],
-    })
-    .then(() => console.log('⚡ Watch Build complete! ⚡'))
-    .catch(() => process.exit(1));
+        }
+      : null,
+  loader: {
+    '.tsx': 'tsx',
+    '.ts': 'ts',
+    '.ttf': 'file',
+    '.jpg': 'file',
+    '.jpeg': 'file',
+    '.png': 'file',
+    '.gif': 'file',
+    '.webp': 'file',
+    '.avif': 'file',
+    '.svg': 'file',
+  },
+  define: {
+    'process.env.REACT_APP_NODE_ENV': JSON.stringify(process.env.REACT_APP_NODE_ENV),
+    'process.env.REACT_APP_API_SERVER_URL': JSON.stringify(process.env.REACT_APP_API_SERVER_URL),
+    'process.env.REACT_APP_DASHBOARD_URL': JSON.stringify(process.env.REACT_APP_DASHBOARD_URL),
+    global: 'window',
+  },
+  plugins: [
+    sassPlugin({
+      async transform(source) {
+        const { css } = await postcss([autoprefixer]).process(source, { from: undefined });
+        return css;
+      },
+    }),
+    svgrPlugin(),
+    inlineImage({
+      extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'],
+      limit: -1,
+    }),
+    // eslint(),
+  ],
+};
 
-config == '-build' &&
-  esbuild
-    .build({
-      // pass any options to esbuild here...
-      logLevel: 'info',
-      entryPoints: ['src/index.tsx'],
-      bundle: true,
-      outdir: outdirectory,
-      outbase: 'src',
-      minify: true,
-      sourcemap: false,
-      minifyWhitespace: true,
-      minifyIdentifiers: true,
-      minifySyntax: false,
-      target: 'es2020',
-      tsconfig: './tsconfig.json',
-      loader: {
-        '.tsx': 'tsx',
-        '.ts': 'ts',
-        '.ttf': 'file',
-        '.jpg': 'file',
-        '.jpeg': 'file',
-        '.png': 'file',
-        '.gif': 'file',
-        '.webp': 'file',
-        '.avif': 'file',
-        '.svg': 'file',
-      },
-      define: {
-        'process.env.REACT_APP_NODE_ENV': JSON.stringify(process.env.REACT_APP_NODE_ENV),
-        'process.env.REACT_APP_API_SERVER_URL': JSON.stringify(
-          process.env.REACT_APP_API_SERVER_URL,
-        ),
-        'process.env.REACT_APP_DASHBOARD_URL': JSON.stringify(process.env.REACT_APP_DASHBOARD_URL),
-        global: 'window',
-      },
-      plugins: [
-        sassPlugin({
-          async transform(source) {
-            const { css } = await postcss([autoprefixer]).process(source, { from: undefined });
-            return css;
-          },
-        }),
-        svgrPlugin(),
-        inlineImage({
-          extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'],
-          limit: -1,
-        }),
-        // eslint(),
-      ],
-    })
-    .then(() => console.log('⚡ Production Build complete! ⚡'))
-    .catch((e) => {
-      console.error(e.message);
-      process.exit(1);
-    });
+esbuild
+  .build(buildOptions)
+  .then(() =>
+    console.log(
+      config == '-watch' ? '⚡ Watch Build complete! ⚡' : '⚡ Production Build complete! ⚡',
+    ),
+  )
+  .catch(() => process.exit(1));
 
 // Run a local web server with livereload when -watch is set
 config == '-watch' && serve();
 
 async function serve() {
-  console.log(`Admin server running from: http://localhost:5001`);
+  console.log(`Server running from: http://localhost:5001`);
 
   const servor = require('servor');
   await servor({
