@@ -37,13 +37,13 @@ const buildOptions = {
   bundle: true,
   outdir: outdirectory,
   outbase: 'src',
+  minifySyntax: false,
+  target: 'es2020',
+  tsconfig: './tsconfig.json',
   minify: config == '-watch' ? false : true,
   sourcemap: config == '-watch' ? true : false,
   minifyWhitespace: config == '-watch' ? false : true,
   minifyIdentifiers: config == '-watch' ? false : true,
-  minifySyntax: false,
-  target: 'es2020',
-  tsconfig: './tsconfig.json',
   incremental: config == '-watch' ? true : false,
   watch:
     config == '-watch'
