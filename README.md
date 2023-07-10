@@ -1,23 +1,53 @@
-# react-starter-esbuild
+# react-starter-esbuild  
+
+<br />
 
 
+A minimal replacement for create-react-app using a truly blazing fast [esbuild](https://esbuild.github.io/) bundler. Up and running in less than 1 minute with almost zero configuration needed.
 
-## Getting started
+<br />
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## What is inside?
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Truly minimal React app with almost zero configuration needed.
 
-## Add your files
+- [TypeScript](https://www.typescriptlang.org/)
+- [esbuild](https://esbuild.github.io/)
+- [Eslint](https://eslint.org/) with [airbnb](https://github.com/airbnb/javascript) Style Guide
+- [Prettier](https://prettier.io/)
+- [Husky](https://github.com/typicode/husky)
+- [lint-staged](https://github.com/okonet/lint-staged)
+- [live-server](https://github.com/tapio/live-server)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+---
 
-```
-cd existing_repo
-git remote add origin https://github.com/akashjavali/react-starter-esbuild-new.git
-git branch -M main
-git push -u origin main
+## Available Scripts
 
-```
+In the project directory, you can run:
 
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:5001](http://localhost:5001) to view it in your browser.
+
+The page will reload when you make changes.\
+If you enable eslint plugin from build file You may also see any lint errors in the console .
+
+### `npm run build`
+
+Builds the app for production to the `public` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+
+<!-- ### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information. -->
+
+
+### License
+
+MIT © [akashjavali](https://github.com/akashjavali/)
